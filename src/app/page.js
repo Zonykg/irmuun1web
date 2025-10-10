@@ -11,19 +11,17 @@ export default function HomePage() {
   const toggleMenu = () => setMenuActive(!menuActive);
 
   const toggleFavorite = (index) => {
-  setFavorites((prev) => {
-    const updated = prev.includes(index)
-      ? prev.filter((i) => i !== index)
-      : [...prev, index];
+    setFavorites((prev) => {
+      const updated = prev.includes(index)
+        ? prev.filter((i) => i !== index)
+        : [...prev, index];
 
-    
-    const favoriteProducts = updated.map((i) => products[i]);
-    localStorage.setItem("favorites", JSON.stringify(favoriteProducts));
+      const favoriteProducts = updated.map((i) => products[i]);
+      localStorage.setItem("favorites", JSON.stringify(favoriteProducts));
 
-    return updated;
-  });
-};
-
+      return updated;
+    });
+  };
 
   const addToCart = (product) => {
     setCart((prev) => [...prev, product]);
@@ -121,170 +119,28 @@ export default function HomePage() {
   ];
 
   const products = [
+    { title: { mn: "Цаасны багц", en: "Paper Pack" }, category: { mn: "Хэвлэлийн материал", en: "Printing Material" }, price: "$20", badge: "Шинэ", id: 1, img: "https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=400&q=80" },
+    { title: { mn: "Брошюр", en: "Brochure" }, category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" }, price: "$50", badge: "", id: 2, img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=400&q=80" },
+    { title: { mn: "Сэтгүүл", en: "Magazine" }, category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" }, price: "$35", badge: "Шинэ", id: 3, img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" },
+    { title: { mn: "Календар", en: "Calendar" }, category: { mn: "Хэвлэлийн материал", en: "Printing Material" }, price: "$15", badge: "", id: 4, img: "https://blog.lulu.com/content/images/2025/06/custom-wall-calendar.png" },
+    { title: { mn: "Постер", en: "Poster" }, category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" }, price: "$25", badge: "Шинэ", id: 5, img: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=400&q=80" },
+    { title: { mn: "Цаасан уут", en: "Paper Bag" }, category: { mn: "Сав баглаа боодол", en: "Packaging" }, price: "$10", badge: "", id: 6, img: "https://m.media-amazon.com/images/I/61FtK4buE6L._AC_SL1500_.jpg" },
+    { title: { mn: "Бэлгийн хайрцаг", en: "Gift Box" }, category: { mn: "Сав баглаа боодол", en: "Packaging" }, price: "$30", badge: "Шинэ", id: 7, img: "https://t3.ftcdn.net/jpg/00/97/34/10/360_F_97341026_7LdmtHCd2M1cGx6U3UICsee18NDzvYUs.jpg" },
+    { title: { mn: "Лого хэвлэл", en: "Logo Print" }, category: { mn: "График & Дизайн", en: "Graphic & Design" }, price: "$40", badge: "", id: 8, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7ojmaH0oP91p8rHpuyWPveoZ1JalvMC9AA&s" },
+    { title: { mn: "Нэвтрүүлгийн хавтас", en: "Magazine Cover" }, category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" }, price: "$18", badge: "", id: 9, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv9oMpOY0yalILxACJQhksaR2-vh_C4m0uHQ&s" },
+    { title: { mn: "Брэнд тэмдэглэгээ", en: "Brand Label" }, category: { mn: "Сав баглаа боодол", en: "Packaging" }, price: "$12", badge: "", id: 10, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvJrSvzxFb639xjMhHDVCcRUbOD79-ITjJg&s" },
+    { title: { mn: "Тэмдэглэл дэвтэр", en: "Notebook" }, category: { mn: "Хэвлэлийн материал", en: "Printing Material" }, price: "$8", badge: "Шинэ", id: 11, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_glPGZkWygPy-_8DudF_GhugM93e0Aq0f5Q&s" },
+    { title: { mn: "Стикер багц", en: "Sticker Pack" }, category: { mn: "Сав баглаа боодол", en: "Packaging" }, price: "$5", badge: "", id: 12, img: "https://axiomprint.com/_next/image?url=https%3A%2F%2Fnewapi.axiomprint.com%2Fuploads%2Fcustom-stocker-pack-2-754.jpg&w=3840&q=100" },
+    { title: { mn: "Цаасан шошго багц", en: "Label Pack" }, category: { mn: "Сав баглаа боодол", en: "Packaging" }, price: "$7", badge: "", id: 13, img: "https://printingstudio.in/cdn/shop/files/beautiful-cider-label-template_23-2150191169.jpg?v=1710506650" },
+    { title: { mn: "Сурталчилгааны баннер", en: "Advertising Banner" }, category: { mn: "График & Дизайн", en: "Graphic & Design" }, price: "$45", badge: "", id: 14, img: "https://static.vecteezy.com/system/resources/thumbnails/002/314/222/small_2x/collection-web-banners-different-sizes-for-mobile-and-social-networks-poster-shopping-ads-and-marketing-material-vector.jpg" },
+    { title: { mn: "Уран зураг хэвлэл", en: "Art Print" }, category: { mn: "График & Дизайн", en: "Graphic & Design" }, price: "$38", badge: "Шинэ", id: 15, img: "https://media.architecturaldigest.com/photos/624cb571b79451cd757d2164/16:9/w_2560%2Cc_limit/artwork-cool-paintings-art-prints-2022-2.jpg" },
+    { title: { mn: "Бичгийн хэрэгсэл багц", en: "Stationery Set" }, category: { mn: "Хэвлэлийн материал", en: "Printing Material" }, price: "$28", badge: "", id: 16, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPzMfCM_KCs2BEHLa87G3HB5u4nHJy9KK8ew&s" },
+    { title: { mn: "Сурталчилгааны постер", en: "Promo Poster" }, category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" }, price: "$32", badge: "", id: 17, img: "https://static.vecteezy.com/system/resources/previews/001/829/863/non_2x/business-design-concept-poster-with-flat-cartoon-illustration-flyer-business-pamphlet-brochure-magazine-cover-design-layout-space-for-promotion-advertising-marketing-print-template-in-a4-size-free-vector.jpg" },
+    { title: { mn: "Лого хэвлэл хайрцаг", en: "Logo Box" }, category: { mn: "Сав баглаа боодол", en: "Packaging" }, price: "$50", badge: "Шинэ", id: 18, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCaRBl3sbfsRkxiBR2dVBynfO3S-Rq90n1DQ&s" },
+    { title: { mn: "Брошюр хэвлэл шинэ", en: "New Brochure" }, category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" }, price: "$18", badge: "", id: 19, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP_I2X_UE0MeQ2wO38WNEEXuPyrFqjIp3P0Q&s" },
+    { title: { mn: "Плакат хэвлэл", en: "Printed Poster" }, category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" }, price: "$20", badge: "Шинэ", id: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScYFU70_eR_pZ1p_yB4DmauHmy2I7lZkQUeA&s" },
+  ];
 
-  {
-    title: { mn: "Цаасны багц", en: "Paper Pack" },
-    category: { mn: "Хэвлэлийн материал", en: "Printing Material" },
-    price: "$20",
-    badge: "Шинэ",
-    id: 1,
-    img: "https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=400&q=80",
-  },
-  {
-    title: { mn: "Брошюр", en: "Brochure" },
-    category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
-    price: "$50",
-    badge: "",
-    id: 2,
-    img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=400&q=80",
-  },
-  {
-    title: { mn: "Сэтгүүл", en: "Magazine" },
-    category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
-    price: "$35",
-    badge: "Шинэ",
-    id: 3,
-    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
-  },
-  {
-    title: { mn: "Календар", en: "Calendar" },
-    category: { mn: "Хэвлэлийн материал", en: "Printing Material" },
-    price: "$15",
-    badge: "",
-    id: 4,  
-    img: "https://blog.lulu.com/content/images/2025/06/custom-wall-calendar.png",
-  },
-  {
-    title: { mn: "Постер", en: "Poster" },
-    category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
-    price: "$25",
-    badge: "Шинэ",
-    id: 5,
-    img: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=400&q=80",
-  },
-  {
-    title: { mn: "Цаасан уут", en: "Paper Bag" },
-    category: { mn: "Сав баглаа боодол", en: "Packaging" },
-    price: "$10",
-    badge: "",
-    id: 6,  
-    img: "https://m.media-amazon.com/images/I/61FtK4buE6L._AC_SL1500_.jpg",
-  },
-  {
-    title: { mn: "Бэлгийн хайрцаг", en: "Gift Box" },
-    category: { mn: "Сав баглаа боодол", en: "Packaging" },
-    price: "$30",
-    badge: "Шинэ",
-    id: 7,
-    img: "https://t3.ftcdn.net/jpg/00/97/34/10/360_F_97341026_7LdmtHCd2M1cGx6U3UICsee18NDzvYUs.jpg",
-  },
-  {
-    title: { mn: "Лого хэвлэл", en: "Logo Print" },
-    category: { mn: "График & Дизайн", en: "Graphic & Design" },
-    price: "$40",
-    badge: "",
-    id: 8,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7ojmaH0oP91p8rHpuyWPveoZ1JalvMC9AA&s",
-  },
-  {
-    title: { mn: "Нэвтрүүлгийн хавтас", en: "Magazine Cover" },
-    category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
-    price: "$18",
-    badge: "",
-    id: 9,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv9oMpOY0yalILxACJQhksaR2-vh_C4m0uHQ&s",
-  },
-  {
-    title: { mn: "Брэнд тэмдэглэгээ", en: "Brand Label" },
-    category: { mn: "Сав баглаа боодол", en: "Packaging" },
-    price: "$12",
-    badge: "",
-    id: 10,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvJrSvzxFb639xjMhHDVCcRUbOD79-ITjJg&s",
-  },
-
- 
-  {
-    title: { mn: "Тэмдэглэл дэвтэр", en: "Notebook" },
-    category: { mn: "Хэвлэлийн материал", en: "Printing Material" },
-    price: "$8",
-    badge: "Шинэ",
-    id: 11,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_glPGZkWygPy-_8DudF_GhugM93e0Aq0f5Q&s",
-  
-    title: { mn: "Стикер багц", en: "Sticker Pack" },
-    category: { mn: "Сав баглаа боодол", en: "Packaging" },
-    price: "$5",
-    badge: "",
-    id: 12,
-    img: "https://axiomprint.com/_next/image?url=https%3A%2F%2Fnewapi.axiomprint.com%2Fuploads%2Fcustom-stocker-pack-2-754.jpg&w=3840&q=100",
-  }
-  ,
-  {
-    title: { mn: "Цаасан шошго багц", en: "Label Pack" },
-    category: { mn: "Сав баглаа боодол", en: "Packaging" },
-    price: "$7",
-    badge: "",
-    id: 13,
-    img: "https://printingstudio.in/cdn/shop/files/beautiful-cider-label-template_23-2150191169.jpg?v=1710506650",
-  },
-  {
-    title: { mn: "Сурталчилгааны баннер", en: "Advertising Banner" },
-    category: { mn: "График & Дизайн", en: "Graphic & Design" },
-    price: "$45",
-    badge: "",
-    id: 14,
-    img: "https://static.vecteezy.com/system/resources/thumbnails/002/314/222/small_2x/collection-web-banners-different-sizes-for-mobile-and-social-networks-poster-shopping-ads-and-marketing-material-vector.jpg",
-  },
-  {
-    title: { mn: "Уран зураг хэвлэл", en: "Art Print" },
-    category: { mn: "График & Дизайн", en: "Graphic & Design" },
-    price: "$38",
-    badge: "Шинэ",
-    id: 15,
-    img: "https://media.architecturaldigest.com/photos/624cb571b79451cd757d2164/16:9/w_2560%2Cc_limit/artwork-cool-paintings-art-prints-2022-2.jpg",
-  },
-  {
-    title: { mn: "Бичгийн хэрэгсэл багц", en: "Stationery Set" },
-    category: { mn: "Хэвлэлийн материал", en: "Printing Material" },
-    price: "$28",
-    badge: "",
-    id: 16,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPzMfCM_KCs2BEHLa87G3HB5u4nHJy9KK8ew&s",
-  },
-  {
-    title: { mn: "Сурталчилгааны постер", en: "Promo Poster" },
-    category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
-    price: "$32",
-    badge: "",
-    id: 17,
-    img: "https://static.vecteezy.com/system/resources/previews/001/829/863/non_2x/business-design-concept-poster-with-flat-cartoon-illustration-flyer-business-pamphlet-brochure-magazine-cover-design-layout-space-for-promotion-advertising-marketing-print-template-in-a4-size-free-vector.jpg",
-  },
-  {
-    title: { mn: "Лого хэвлэл хайрцаг", en: "Logo Box" },
-    category: { mn: "Сав баглаа боодол", en: "Packaging" },
-    price: "$50",
-    badge: "Шинэ",
-    id: 18,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCaRBl3sbfsRkxiBR2dVBynfO3S-Rq90n1DQ&s",
-  },
-  {
-    title: { mn: "Брошюр хэвлэл шинэ", en: "New Brochure" },
-    category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
-    price: "$18",
-    badge: "",
-    id: 19,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP_I2X_UE0MeQ2wO38WNEEXuPyrFqjIp3P0Q&s",
-  },
-  {
-    title: { mn: "Плакат хэвлэл", en: "Printed Poster" },
-    category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
-    price: "$20",
-    badge: "Шинэ",
-    id: 20,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScYFU70_eR_pZ1p_yB4DmauHmy2I7lZkQUeA&s",
-  },
-];
   return (
   <>
     <header>
