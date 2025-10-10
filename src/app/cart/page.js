@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function CartPage() {
   const [cart, setCart] = useState([]);
@@ -43,9 +44,21 @@ export default function CartPage() {
           {cart.map((product, idx) => (
             <div
               key={idx}
-              style={{ display: "flex", border: "1px solid #ccc", padding: "10px", gap: "10px", alignItems: "center" }}
+              style={{
+                display: "flex",
+                border: "1px solid #ccc",
+                padding: "10px",
+                gap: "10px",
+                alignItems: "center",
+              }}
             >
-              <img src={product.img} style={{ width: "100px", height: "100px", objectFit: "cover" }} />
+              <Image
+                src={product.img}
+                alt={product.title?.mn || "Product Image"}
+                width={100}
+                height={100}
+                style={{ objectFit: "cover" }}
+              />
               <div style={{ flex: 1 }}>
                 <h3>{product.title.mn}</h3>
                 <p>Үнэ: {product.price}</p>

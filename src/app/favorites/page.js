@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function FavoritesPage() {
   const router = useRouter();
@@ -10,7 +11,6 @@ export default function FavoritesPage() {
   const [theme, setTheme] = useState("light");
   const [language, setLanguage] = useState("mn");
 
-  // Homepage-с ирсэн product-д id байх ёстой
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -37,9 +37,7 @@ export default function FavoritesPage() {
     localStorage.setItem("favorites", JSON.stringify(updated));
   };
 
-  // Cart-д нэмэх үед favorites-д бас байх
   const handleAddToCart = (product) => {
-    // Cart-д нэмэх
     if (!cart.find((p) => p.id === product.id)) {
       const updatedCart = [...cart, product];
       setCart(updatedCart);
@@ -49,7 +47,6 @@ export default function FavoritesPage() {
       alert(`${product.title[language]} ${language === "mn" ? "сагсанд аль хэдийнэ байна!" : "is already in cart!"}`);
     }
 
-    // Favorites-д байхгүй бол нэмэх
     if (!favorites.find((p) => p.id === product.id)) {
       const updatedFav = [...favorites, product];
       setFavorites(updatedFav);
@@ -82,7 +79,13 @@ export default function FavoritesPage() {
         <div style={styles.grid}>
           {favorites.map((product) => (
             <div key={product.id} style={{ ...styles.card, background: colors.card }}>
-              <img src={product.img} alt={product.title[language]} style={styles.image} />
+              <Image
+                src={product.img}
+                alt={product.title[language] || "Product Image"}
+                width={300}
+                height={180}
+                style={{ borderRadius: "10px", objectFit: "cover" }}
+              />
               <h3>{product.title[language]}</h3>
               <p style={{ color: colors.price }}>{product.price}</p>
               <div style={styles.buttonGroup}>
@@ -101,7 +104,6 @@ export default function FavoritesPage() {
   );
 }
 
-// 🌞 Light mode өнгө
 const lightColors = {
   bg: "#f5f5f5",
   text: "#222",
@@ -110,7 +112,6 @@ const lightColors = {
   price: "#009688",
 };
 
-// 🌙 Dark mode өнгө
 const darkColors = {
   bg: "#121212",
   text: "#f5f5f5",
@@ -126,7 +127,6 @@ const styles = {
   empty: { textAlign: "center", color: "#777" },
   grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "20px" },
   card: { borderRadius: "12px", overflow: "hidden", boxShadow: "0 4px 8px rgba(0,0,0,0.2)", transition: "0.3s", textAlign: "center", padding: "10px" },
-  image: { width: "100%", height: "180px", objectFit: "cover", borderRadius: "10px" },
   buttonGroup: { display: "flex", justifyContent: "space-between", gap: "10px", marginTop: "10px" },
   button: { flex: 1, border: "none", color: "#fff", padding: "8px 0", borderRadius: "6px", cursor: "pointer", transition: "0.3s" },
 };
