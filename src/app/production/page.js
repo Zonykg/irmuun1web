@@ -1,15 +1,53 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+
 export default function ProductionPage() {
   const [menuActive, setMenuActive] = useState(false);
   const toggleMenu = () => setMenuActive(!menuActive);
 
+  const products = [
+    {
+      title: "Зохиолын ном",
+      category: "Ном",
+      price: "20,000₮ / 100ш",
+      img: "https://book.mn/timthumb.php?src=https://book.mn/uploads/products/1646811400-92057303.jpg&w=400&h=500&zc=2&q=90&s=1",
+      badge: "",
+      rating: 4,
+    },
+    {
+      title: "Дэвтэр",
+      category: "Дэвтэр",
+      price: "28,000₮",
+      oldPrice: "35,000₮",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSXXfjSpNqn5qc7vfp5GbzUZI6yCf-7Ll1ZQ&s",
+      badge: "Хямдрал",
+      rating: 5,
+    },
+    {
+      title: "Бизнесийн илтгэл брошур",
+      category: "Брошур",
+      price: "120,000₮ / 500ш",
+      img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      badge: "",
+      rating: 4,
+    },
+  ];
+
+  const handleNewsletter = (e) => {
+    e.preventDefault();
+    alert("Бүртгэл амжилттай боллоо!");
+    e.target.reset();
+  };
 
   useEffect(() => {
     const handleAnchorClick = (e) => {
-      if (e.target.tagName === "A" && e.target.getAttribute("href")?.startsWith("#")) {
+      if (
+        e.target.tagName === "A" &&
+        e.target.getAttribute("href")?.startsWith("#")
+      ) {
         e.preventDefault();
         const targetId = e.target.getAttribute("href");
         const targetElement = document.querySelector(targetId);
@@ -63,11 +101,21 @@ export default function ProductionPage() {
               <i className={menuActive ? "fas fa-times" : "fas fa-bars"}></i>
             </button>
             <ul className={`nav-links ${menuActive ? "active" : ""}`}>
-              <li><a href="/">Нүүр</a></li>
-              <li><a href="/services">Үйлчилгээ</a></li>
-              <li><a href="/production">Бүтээгдэхүүн</a></li>
-              <li><a href="#about">Бидний тухай</a></li>
-              <li><a href="#contact">Холбогдох</a></li>
+              <li>
+                <Link href="/">Нүүр</Link>
+              </li>
+              <li>
+                <Link href="/services">Үйлчилгээ</Link>
+              </li>
+              <li>
+                <Link href="/production">Бүтээгдэхүүн</Link>
+              </li>
+              <li>
+                <Link href="#about">Бидний тухай</Link>
+              </li>
+              <li>
+                <Link href="#contact">Холбогдох</Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -81,94 +129,62 @@ export default function ProductionPage() {
           </div>
 
           <div className="products-grid">
-            
-            <div className="product-card">
-              <div
-                className="product-img"
-                style={{
-                  backgroundImage:
-                    "url('https://book.mn/timthumb.php?src=https://book.mn/uploads/products/1646811400-92057303.jpg&w=400&h=500&zc=2&q=90&s=1')",
-                }}
-              ></div>
-              <div className="product-content">
-                <span className="product-category">Ном</span>
-                <h3>Зохиолын ном</h3>
-                <div className="product-rating">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="far fa-star"></i>
+            {products.map((product, index) => (
+              <div key={index} className="product-card">
+                {product.badge && (
+                  <div className="product-badge">{product.badge}</div>
+                )}
+                <div className="product-img">
+                  <Image
+                    src={product.img}
+                    alt={product.title}
+                    width={400}
+                    height={500}
+                    style={{ objectFit: "cover" }}
+                  />
                 </div>
-                <div className="product-price">20,000₮ / 100ш</div>
-                <div className="product-actions">
-                  <a href="#contact" className="btn btn-sm">Захиалах</a>
-                  <a href="#" className="btn btn-sm btn-secondary">Дэлгэрэнгүй</a>
-                </div>
-              </div>
-            </div>
-
-            {/* Product 2 */}
-            <div className="product-card">
-              <div className="product-badge">Хямдрал</div>
-              <div
-                className="product-img"
-                style={{
-                  backgroundImage:
-                    "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSXXfjSpNqn5qc7vfp5GbzUZI6yCf-7Ll1ZQ&s')",
-                }}
-              ></div>
-              <div className="product-content">
-                <span className="product-category">Дэвтэр</span>
-                <h3>Дэвтэр</h3>
-                <div className="product-rating">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                </div>
-                <div className="product-price">
-                  <span style={{ textDecoration: "line-through", color: "#999", marginRight: "10px" }}>35,000₮</span>
-                  <span>28,000₮</span>
-                </div>
-                <div className="product-actions">
-                  <a href="#contact" className="btn btn-sm">Захиалах</a>
-                  <a href="#" className="btn btn-sm btn-secondary">Дэлгэрэнгүй</a>
+                <div className="product-content">
+                  <span className="product-category">{product.category}</span>
+                  <h3>{product.title}</h3>
+                  <div className="product-rating">
+                    {[...Array(5)].map((_, i) => (
+                      <i
+                        key={i}
+                        className={i < product.rating ? "fas fa-star" : "far fa-star"}
+                      ></i>
+                    ))}
+                  </div>
+                  <div className="product-price">
+                    {product.oldPrice && (
+                      <span
+                        style={{
+                          textDecoration: "line-through",
+                          color: "#999",
+                          marginRight: "10px",
+                        }}
+                      >
+                        {product.oldPrice}
+                      </span>
+                    )}
+                    <span>{product.price}</span>
+                  </div>
+                  <div className="product-actions">
+                    <Link href="#contact" className="btn btn-sm">
+                      Захиалах
+                    </Link>
+                    <Link href="#" className="btn btn-sm btn-secondary">
+                      Дэлгэрэнгүй
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Product 3 */}
-            <div className="product-card">
-              <div
-                className="product-img"
-                style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')",
-                }}
-              ></div>
-              <div className="product-content">
-                <span className="product-category">Брошур</span>
-                <h3>Бизнесийн илтгэл брошур</h3>
-                <div className="product-rating">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="far fa-star"></i>
-                </div>
-                <div className="product-price">120,000₮ / 500ш</div>
-                <div className="product-actions">
-                  <a href="#contact" className="btn btn-sm">Захиалах</a>
-                  <a href="#" className="btn btn-sm btn-secondary">Дэлгэрэнгүй</a>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
 
           <div style={{ textAlign: "center", marginTop: "4rem" }}>
-            <a href="#products" className="btn">Бүх бүтээгдэхүүн үзэх</a>
+            <Link href="#products" className="btn">
+              Бүх бүтээгдэхүүн үзэх
+            </Link>
           </div>
         </div>
       </section>
@@ -184,30 +200,48 @@ export default function ProductionPage() {
                 тавьдаг.
               </p>
               <div className="social-links">
-                <a href="#"><i className="fab fa-facebook-f"></i></a>
-                <a href="#"><i className="fab fa-instagram"></i></a>
-                <a href="#"><i className="fab fa-linkedin-in"></i></a>
-                <a href="#"><i className="fab fa-youtube"></i></a>
+                <Link href="#">
+                  <i className="fab fa-facebook-f"></i>
+                </Link>
+                <Link href="#">
+                  <i className="fab fa-instagram"></i>
+                </Link>
+                <Link href="#">
+                  <i className="fab fa-linkedin-in"></i>
+                </Link>
+                <Link href="#">
+                  <i className="fab fa-youtube"></i>
+                </Link>
               </div>
             </div>
 
             <div className="footer-column">
               <h3>Холбоо барих</h3>
               <div className="footer-contact-info">
-                <p><i className="fas fa-map-marker-alt"></i> Улаанбаатар хот, СХД, 1-р хороо</p>
-                <p><i className="fas fa-phone"></i> +(976) 12345678</p>
-                <p><i className="fas fa-envelope"></i> info@admon.mn</p>
-                <p><i className="fas fa-clock"></i> Даваа-Баасан: 9:00 - 18:00</p>
+                <p>
+                  <i className="fas fa-map-marker-alt"></i> Улаанбаатар хот, СХД,
+                  1-р хороо
+                </p>
+                <p>
+                  <i className="fas fa-phone"></i> +(976) 12345678
+                </p>
+                <p>
+                  <i className="fas fa-envelope"></i> info@admon.mn
+                </p>
+                <p>
+                  <i className="fas fa-clock"></i> Даваа-Баасан: 9:00 - 18:00
+                </p>
               </div>
             </div>
 
             <div className="footer-column">
               <h3>Мэдээлэл авах</h3>
-              <p>Бидний шинэ бүтээгдэхүүн, үйлчилгээний талаар мэдээлэл авахыг хүсвэл и-мэйл хаягаа үлдээнэ үү.</p>
-              <div className="form-group" style={{ marginTop: "1rem" }}>
-                <input type="email" className="form-control" placeholder="И-мэйл хаяг" />
-                <button type="submit" className="btn btn-sm" style={{ width: "100%", marginTop: "0.5rem" }}>Бүртгүүлэх</button>
-              </div>
+              <form onSubmit={handleNewsletter}>
+                <input type="email" placeholder="И-мэйл хаяг" required />
+                <button type="submit" className="btn btn-sm" style={{ width: "100%", marginTop: "0.5rem" }}>
+                  Бүртгүүлэх
+                </button>
+              </form>
             </div>
           </div>
 
@@ -215,7 +249,7 @@ export default function ProductionPage() {
             <p>&copy; 2025 Admon Хэвлэлийн үйлдвэр. Бүх эрх хуулиар хамгаалагдсан.</p>
           </div>
         </div>
-      </footer>
-    </>
+      </footer> 
+       </>
   );
 }

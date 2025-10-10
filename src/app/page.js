@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function HomePage() {
   const [menuActive, setMenuActive] = useState(false);
-  const [language, setLanguage] = useState("mn"); 
+  const [language, setLanguage] = useState("mn");
   const [favorites, setFavorites] = useState([]);
   const [cart, setCart] = useState([]);
 
@@ -142,49 +143,50 @@ export default function HomePage() {
   ];
 
   return (
-  <>
-    <header>
-      <div className="container">
-        <nav>
-          <div className="logo">
-            <span>🖨️</span>
-            <span>Admon</span>
-          </div>
+    <>
+      <header>
+        <div className="container">
+          <nav>
+            <div className="logo">
+              <span>🖨️</span>
+              <span>Admon</span>
+            </div>
 
-          <button
-            className="lang-btn"
-            onClick={() => setLanguage(language === "mn" ? "en" : "mn")}
-          >
-            {language === "mn" ? "EN" : "MN"}
-          </button>
+            <button
+              className="lang-btn"
+              onClick={() => setLanguage(language === "mn" ? "en" : "mn")}
+            >
+              {language === "mn" ? "EN" : "MN"}
+            </button>
 
-          <button className="mobile-menu-btn" onClick={toggleMenu}>
-            <i className={menuActive ? "fas fa-times" : "fas fa-bars"}></i>
-          </button>
+            <button className="mobile-menu-btn" onClick={toggleMenu}>
+              <i className={menuActive ? "fas fa-times" : "fas fa-bars"}></i>
+            </button>
 
-          <ul className={`nav-links ${menuActive ? "active" : ""}`}>
-            <li>
-              <a href="/favorites">{language === "mn" ? "Таалагдсан" : "Favorites"}</a>
-            </li>
-            <li>
-              <a href="#hero">{language === "mn" ? "Нүүр" : "Home"}</a>
-            </li>
-            <li>
-              <a href="#services">{language === "mn" ? "Үйлчилгээ" : "Services"}</a>
-            </li>
-            <li>
-              <a href="#products">{language === "mn" ? "Бүтээгдэхүүн" : "Products"}</a>
-            </li>
-            <li>
-              <a href="#about">{language === "mn" ? "Бидний тухай" : "About Us"}</a>
-            </li>
-            <li>
-              <a href="#contact">{language === "mn" ? "Холбогдох" : "Contact"}</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+            <ul className={`nav-links ${menuActive ? "active" : ""}`}>
+              <li>
+                <Link href="/favorites">{language === "mn" ? "Таалагдсан" : "Favorites"}</Link>
+              </li>
+              <li>
+                <a href="#hero">{language === "mn" ? "Нүүр" : "Home"}</a>
+              </li>
+              <li>
+                <a href="#services">{language === "mn" ? "Үйлчилгээ" : "Services"}</a>
+              </li>
+              <li>
+                <a href="#products">{language === "mn" ? "Бүтээгдэхүүн" : "Products"}</a>
+              </li>
+              <li>
+                <a href="#about">{language === "mn" ? "Бидний тухай" : "About Us"}</a>
+              </li>
+              <li>
+                <a href="#contact">{language === "mn" ? "Холбогдох" : "Contact"}</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
      
     
       <section className="hero" id="hero">
@@ -201,12 +203,12 @@ export default function HomePage() {
                 : "We provide all your printing needs in one place with complete solutions."}
             </p>
             <div className="btn-group">
-              <a href="#products" className="btn">
+              <link href="#products" className="btn">
                 {language === "mn" ? "Бүтээгдэхүүн үзэх" : "View Products"}
-              </a>
-              <a href="#contact" className="btn btn-secondary">
+              </link>
+              <link href="#contact" className="btn btn-secondary">
                 {language === "mn" ? "Үнэ авах" : "Get Quote"}
-              </a>
+              </link>
             </div>
           </div>
         </div>
