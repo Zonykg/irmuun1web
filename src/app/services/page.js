@@ -1,4 +1,4 @@
-"use client";
+  "use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -43,8 +43,8 @@ export default function ServicesPage() {
               <li><Link href="/">Нүүр</Link></li>
               <li><Link href="/services">Үйлчилгээ</Link></li>
               <li><Link href="/production">Бүтээгдэхүүн</Link></li>
-              <li><a href="#about">Бидний тухай</a></li>
-              <li><a href="#contact">Холбогдох</a></li>
+              <li><Link href="#about">Бидний тухай</Link></li>
+              <li><Link href="#contact">Холбогдох</Link></li>
             </ul>
           </nav>
         </div>
@@ -64,7 +64,7 @@ export default function ServicesPage() {
               <div className="service-content">
                 <h3>Ном хэвлэлт</h3>
                 <p>Сургуулийн гарын авлага, уран зохиол, сурах бичиг зэрэг бүх төрлийн номын хэвлэлт</p>
-                <a href="#contact" className="btn btn-sm">Дэлгэрэнгүй</a>
+                <Link href="#contact" className="btn btn-sm">Дэлгэрэнгүй</Link>
               </div>
             </div>
 
@@ -82,7 +82,7 @@ export default function ServicesPage() {
               <div className="service-content">
                 <h3>Тэмдэглэлийн дэвтэр</h3>
                 <p>Сургууль, оффис, хувийн хэрэглээнд зориулсан олон төрлийн дэвтэр</p>
-                <a href="#contact" className="btn btn-sm">Дэлгэрэнгүй</a>
+                <Link href="#contact" className="btn btn-sm">Дэлгэрэнгүй</Link>
               </div>
             </div>
           </div>
@@ -101,10 +101,10 @@ export default function ServicesPage() {
             <div className="footer-column">
               <h3>Холбоос</h3>
               <ul>
-                <li><a href="#services">Үйлчилгээ</a></li>
+                <li><Link href="#services">Үйлчилгээ</Link></li>
                 <li><Link href="/production">Бүтээгдэхүүн</Link></li>
-                <li><a href="#about">Бидний тухай</a></li>
-                <li><a href="#contact">Холбогдох</a></li>
+                <li><Link href="#about">Бидний тухай</Link></li>
+                <li><Link href="#contact">Холбогдох</Link></li>
               </ul>
             </div>
 
