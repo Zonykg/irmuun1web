@@ -10,64 +10,57 @@ export default function CartPage() {
     setCart(savedCart);
   }, []);
 
-  const removeFromCart = (index) => {
-    const updated = cart.filter((_, i) => i !== index);
-    setCart(updated);
-    localStorage.setItem("cart", JSON.stringify(updated));
+  const updateQuantity = (product, amount) => {
+    const updatedCart = cart.map((p) => {
+      if (p.title.mn === product.title.mn) {
+        const newQty = (p.quantity || 1) + amount;
+        return { ...p, quantity: newQty > 0 ? newQty : 1 };
+      }
+      return p;
+    });
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+  const removeFromCart = (product) => {
+    const updatedCart = cart.filter((p) => p.title.mn !== product.title.mn);
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const totalPrice = cart.reduce((acc, item) => {
+    const priceNum = parseFloat(item.price.replace("$", ""));
+    return acc + priceNum * (item.quantity || 1);
+  }, 0);
 
   return (
-    <div className="container">
-      <h1>🛒 Таны сагс</h1>
+    <div style={{ padding: "20px" }}>
+      <h1>🛒 Танай сагс</h1>
       {cart.length === 0 ? (
-        <p>Таны сагс хоосон байна.</p>
+        <p>Сагсанд бараа байхгүй байна.</p>
       ) : (
-        <div className="cart-grid">
-          {cart.map((item, index) => (
-            <div key={index} className="cart-card">
-              <img src={item.img} alt={item.title} />
-              <h3>{item.title}</h3>
-              <p>{item.price}₮</p>
-              <button onClick={() => removeFromCart(index)}>Хасах</button>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          {cart.map((product, idx) => (
+            <div
+              key={idx}
+              style={{ display: "flex", border: "1px solid #ccc", padding: "10px", gap: "10px", alignItems: "center" }}
+            >
+              <img src={product.img} style={{ width: "100px", height: "100px", objectFit: "cover" }} />
+              <div style={{ flex: 1 }}>
+                <h3>{product.title.mn}</h3>
+                <p>Үнэ: {product.price}</p>
+                <p>Тоо: {product.quantity || 1}</p>
+                <div style={{ display: "flex", gap: "5px", marginTop: "5px" }}>
+                  <button onClick={() => updateQuantity(product, 1)}>➕</button>
+                  <button onClick={() => updateQuantity(product, -1)}>➖</button>
+                  <button onClick={() => removeFromCart(product)}>❌ Хасах</button>
+                </div>
+              </div>
             </div>
           ))}
+          <h2>Нийт үнэ: ${totalPrice}</h2>
         </div>
       )}
-      <h2>Нийт дүн: {totalPrice.toLocaleString()}₮</h2>
-
-      <style jsx>{`
-        .container {
-          padding: 2rem;
-        }
-        .cart-grid {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-        }
-        .cart-card {
-          border: 1px solid #ccc;
-          padding: 1rem;
-          border-radius: 8px;
-          width: 200px;
-          text-align: center;
-        }
-        img {
-          width: 100%;
-          height: 150px;
-          object-fit: cover;
-        }
-        button {
-          background: #ff5252;
-          border: none;
-          color: white;
-          padding: 0.5rem 1rem;
-          border-radius: 5px;
-          margin-top: 0.5rem;
-          cursor: pointer;
-        }
-      `}</style>
     </div>
   );
 }

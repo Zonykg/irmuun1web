@@ -127,6 +127,7 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн материал", en: "Printing Material" },
     price: "$20",
     badge: "Шинэ",
+    id: 1,
     img: "https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=400&q=80",
   },
   {
@@ -134,6 +135,7 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
     price: "$50",
     badge: "",
+    id: 2,
     img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=400&q=80",
   },
   {
@@ -141,6 +143,7 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
     price: "$35",
     badge: "Шинэ",
+    id: 3,
     img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
   },
   {
@@ -148,6 +151,7 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн материал", en: "Printing Material" },
     price: "$15",
     badge: "",
+    id: 4,  
     img: "https://blog.lulu.com/content/images/2025/06/custom-wall-calendar.png",
   },
   {
@@ -155,6 +159,7 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
     price: "$25",
     badge: "Шинэ",
+    id: 5,
     img: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=400&q=80",
   },
   {
@@ -162,6 +167,7 @@ export default function HomePage() {
     category: { mn: "Сав баглаа боодол", en: "Packaging" },
     price: "$10",
     badge: "",
+    id: 6,  
     img: "https://m.media-amazon.com/images/I/61FtK4buE6L._AC_SL1500_.jpg",
   },
   {
@@ -169,6 +175,7 @@ export default function HomePage() {
     category: { mn: "Сав баглаа боодол", en: "Packaging" },
     price: "$30",
     badge: "Шинэ",
+    id: 7,
     img: "https://t3.ftcdn.net/jpg/00/97/34/10/360_F_97341026_7LdmtHCd2M1cGx6U3UICsee18NDzvYUs.jpg",
   },
   {
@@ -176,6 +183,7 @@ export default function HomePage() {
     category: { mn: "График & Дизайн", en: "Graphic & Design" },
     price: "$40",
     badge: "",
+    id: 8,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7ojmaH0oP91p8rHpuyWPveoZ1JalvMC9AA&s",
   },
   {
@@ -183,6 +191,7 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
     price: "$18",
     badge: "",
+    id: 9,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv9oMpOY0yalILxACJQhksaR2-vh_C4m0uHQ&s",
   },
   {
@@ -190,6 +199,7 @@ export default function HomePage() {
     category: { mn: "Сав баглаа боодол", en: "Packaging" },
     price: "$12",
     badge: "",
+    id: 10,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvJrSvzxFb639xjMhHDVCcRUbOD79-ITjJg&s",
   },
 
@@ -199,12 +209,14 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн материал", en: "Printing Material" },
     price: "$8",
     badge: "Шинэ",
+    id: 11,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_glPGZkWygPy-_8DudF_GhugM93e0Aq0f5Q&s",
   
     title: { mn: "Стикер багц", en: "Sticker Pack" },
     category: { mn: "Сав баглаа боодол", en: "Packaging" },
     price: "$5",
     badge: "",
+    id: 12,
     img: "https://axiomprint.com/_next/image?url=https%3A%2F%2Fnewapi.axiomprint.com%2Fuploads%2Fcustom-stocker-pack-2-754.jpg&w=3840&q=100",
   }
   ,
@@ -213,6 +225,7 @@ export default function HomePage() {
     category: { mn: "Сав баглаа боодол", en: "Packaging" },
     price: "$7",
     badge: "",
+    id: 13,
     img: "https://printingstudio.in/cdn/shop/files/beautiful-cider-label-template_23-2150191169.jpg?v=1710506650",
   },
   {
@@ -220,6 +233,7 @@ export default function HomePage() {
     category: { mn: "График & Дизайн", en: "Graphic & Design" },
     price: "$45",
     badge: "",
+    id: 14,
     img: "https://static.vecteezy.com/system/resources/thumbnails/002/314/222/small_2x/collection-web-banners-different-sizes-for-mobile-and-social-networks-poster-shopping-ads-and-marketing-material-vector.jpg",
   },
   {
@@ -227,6 +241,7 @@ export default function HomePage() {
     category: { mn: "График & Дизайн", en: "Graphic & Design" },
     price: "$38",
     badge: "Шинэ",
+    id: 15,
     img: "https://media.architecturaldigest.com/photos/624cb571b79451cd757d2164/16:9/w_2560%2Cc_limit/artwork-cool-paintings-art-prints-2022-2.jpg",
   },
   {
@@ -234,6 +249,7 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн материал", en: "Printing Material" },
     price: "$28",
     badge: "",
+    id: 16,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPzMfCM_KCs2BEHLa87G3HB5u4nHJy9KK8ew&s",
   },
   {
@@ -241,6 +257,7 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
     price: "$32",
     badge: "",
+    id: 17,
     img: "https://static.vecteezy.com/system/resources/previews/001/829/863/non_2x/business-design-concept-poster-with-flat-cartoon-illustration-flyer-business-pamphlet-brochure-magazine-cover-design-layout-space-for-promotion-advertising-marketing-print-template-in-a4-size-free-vector.jpg",
   },
   {
@@ -248,6 +265,7 @@ export default function HomePage() {
     category: { mn: "Сав баглаа боодол", en: "Packaging" },
     price: "$50",
     badge: "Шинэ",
+    id: 18,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCaRBl3sbfsRkxiBR2dVBynfO3S-Rq90n1DQ&s",
   },
   {
@@ -255,6 +273,7 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
     price: "$18",
     badge: "",
+    id: 19,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP_I2X_UE0MeQ2wO38WNEEXuPyrFqjIp3P0Q&s",
   },
   {
@@ -262,55 +281,55 @@ export default function HomePage() {
     category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" },
     price: "$20",
     badge: "Шинэ",
+    id: 20,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScYFU70_eR_pZ1p_yB4DmauHmy2I7lZkQUeA&s",
   },
 ];
   return (
-    <>
-      {}
-      <header>
-        <div className="container">
-          <nav>
-            <div className="logo">
-              <span>🖨️</span>
-              <span>Admon</span>
-            </div>
+  <>
+    <header>
+      <div className="container">
+        <nav>
+          <div className="logo">
+            <span>🖨️</span>
+            <span>Admon</span>
+          </div>
 
-            <button
-              className="lang-btn"
-              onClick={() => setLanguage(language === "mn" ? "en" : "mn")}
-            >
-              {language === "mn" ? "EN" : "MN"}
-            </button>
+          <button
+            className="lang-btn"
+            onClick={() => setLanguage(language === "mn" ? "en" : "mn")}
+          >
+            {language === "mn" ? "EN" : "MN"}
+          </button>
 
-            <button className="mobile-menu-btn" onClick={toggleMenu}>
-              <i className={menuActive ? "fas fa-times" : "fas fa-bars"}></i>
-            </button>
+          <button className="mobile-menu-btn" onClick={toggleMenu}>
+            <i className={menuActive ? "fas fa-times" : "fas fa-bars"}></i>
+          </button>
 
-            <ul className={`nav-links ${menuActive ? "active" : ""}`}>
-              <li>
+          <ul className={`nav-links ${menuActive ? "active" : ""}`}>
+            <li>
               <a href="/favorites">{language === "mn" ? "Таалагдсан" : "Favorites"}</a>
-              </li>
-              <li>
-                <a href="#hero">{language === "mn" ? "Нүүр" : "Home"}</a>
-              </li>
-              <li>
-                <a href="#services">{language === "mn" ? "Үйлчилгээ" : "Services"}</a>
-              </li>
-              <li>
-                <a href="#products">{language === "mn" ? "Бүтээгдэхүүн" : "Products"}</a>
-              </li>
-              <li>
-                <a href="#about">{language === "mn" ? "Бидний тухай" : "About Us"}</a>
-              </li>
-              <li>
-                <a href="#contact">{language === "mn" ? "Холбогдох" : "Contact"}</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
+            </li>
+            <li>
+              <a href="#hero">{language === "mn" ? "Нүүр" : "Home"}</a>
+            </li>
+            <li>
+              <a href="#services">{language === "mn" ? "Үйлчилгээ" : "Services"}</a>
+            </li>
+            <li>
+              <a href="#products">{language === "mn" ? "Бүтээгдэхүүн" : "Products"}</a>
+            </li>
+            <li>
+              <a href="#about">{language === "mn" ? "Бидний тухай" : "About Us"}</a>
+            </li>
+            <li>
+              <a href="#contact">{language === "mn" ? "Холбогдох" : "Contact"}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+     
     
       <section className="hero" id="hero">
         <div className="container">
@@ -362,7 +381,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Products */}
       <section className="products" id="products">
         <div className="container">
           <div className="section-title">
@@ -423,8 +441,8 @@ export default function HomePage() {
               <h3>{language === "mn" ? "20+ жилийн туршлага" : "20+ Years of Experience"}</h3>
               <p>
                 {language === "mn"
-                  ? "АДМОН компани нь 2000 оноос хойш тасралтгүй үйл ажиллагаа явуулж..."
-                  : "Admon has been operating since 2000, becoming a leading printing company in Mongolia..."}
+                  ? "АДМОН компани нь 2000 оноос хойш тасралтгүй үйл ажиллагаа явуулж, хэвлэлийн салбарт Монголын тэргүүлэгч компаниудын нэг болон хөгжиж ирсэн.Бид орчин үеийн тоног төхөөрөмж, дэвшилтэт технологийг нэвтрүүлж, олон улсын стандартыг баримталж ажилладаг.Манай компани нь зөвхөн хэвлэх үйлдвэр биш, харин дизайн, хэвлэл, хувилахаас эхлээд бүтээгдэхүүнийг гарт хүргэх хүртэлх бүх үйл явцыг гүйцэтгэдэг цогц үйлчилгээний компани юм."
+                  : "ADMON Company has been operating continuously since 2000 and has developed into one of Mongolia's leading companies in the printing industry. We introduce modern equipment and advanced technology and adhere to international standards. Our company is not just a printing house, but a comprehensive service company that performs the entire process from design, printing, copying to delivering products to the hand"}
               </p>
             </div>
             <div className="about-img">
