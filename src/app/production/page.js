@@ -2,7 +2,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import styles from "./page.module.css"; 
 export default function ProductionPage() {
   const [menuActive, setMenuActive] = useState(false);
   const toggleMenu = () => setMenuActive(!menuActive);
