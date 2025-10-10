@@ -30,7 +30,7 @@ export default function CartPage() {
   };
 
   const totalPrice = cart.reduce((acc, item) => {
-    const priceNum = parseFloat(item.price.replace("$", ""));
+    const priceNum = parseFloat(item.price.replace("₮", "").replace(",", ""));
     return acc + priceNum * (item.quantity || 1);
   }, 0);
 
@@ -54,7 +54,7 @@ export default function CartPage() {
             >
               <Image
                 src={product.img}
-                alt={product.title?.mn || "Product Image"}
+                alt={product.title.mn}
                 width={100}
                 height={100}
                 style={{ objectFit: "cover" }}
@@ -71,7 +71,7 @@ export default function CartPage() {
               </div>
             </div>
           ))}
-          <h2>Нийт үнэ: ${totalPrice}</h2>
+          <h2>Нийт үнэ: {totalPrice.toLocaleString()}₮</h2>
         </div>
       )}
     </div>

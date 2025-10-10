@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function FavoritesPage() {
-  const router = useRouter();
   const [favorites, setFavorites] = useState([]);
   const [cart, setCart] = useState([]);
   const [theme, setTheme] = useState("light");
@@ -57,42 +56,38 @@ export default function FavoritesPage() {
   const colors = theme === "dark" ? darkColors : lightColors;
 
   return (
-    <div style={{ ...styles.container, background: colors.bg, color: colors.text }}>
-      <div style={styles.header}>
+    <div style={{ minHeight: "100vh", padding: "40px 20px", background: colors.bg, color: colors.text }}>
+      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
         <h1>❤️ {language === "mn" ? "Таалагдсан бүтээгдэхүүнүүд" : "Favorites"}</h1>
         <div style={{ display: "flex", gap: "10px" }}>
-          <button onClick={toggleTheme} style={{ ...styles.themeBtn, background: colors.button }}>
+          <button onClick={toggleTheme} style={{ background: colors.button, color: "#fff", padding: "8px 16px", borderRadius: "6px" }}>
             {theme === "light" ? "🌙 Dark" : "☀️ Light"}
           </button>
-          <button onClick={toggleLanguage} style={{ ...styles.themeBtn, background: colors.button }}>
+          <button onClick={toggleLanguage} style={{ background: colors.button, color: "#fff", padding: "8px 16px", borderRadius: "6px" }}>
             {language === "mn" ? "EN" : "MN"}
           </button>
-          <button onClick={() => router.push("/")} style={{ ...styles.themeBtn, background: "#2196f3" }}>
+          <Link href="/" style={{ background: "#2196f3", color: "#fff", padding: "8px 16px", borderRadius: "6px", textDecoration: "none" }}>
             {language === "mn" ? "Нүүр хуудас руу буцах" : "Back to Home"}
-          </button>
+          </Link>
         </div>
-      </div>
+      </header>
 
       {favorites.length === 0 ? (
-        <p style={styles.empty}>{language === "mn" ? "Одоогоор таалагдсан бүтээгдэхүүн байхгүй байна." : "No favorites yet."}</p>
+        <p style={{ textAlign: "center", color: "#777" }}>
+          {language === "mn" ? "Одоогоор таалагдсан бүтээгдэхүүн байхгүй байна." : "No favorites yet."}
+        </p>
       ) : (
-        <div style={styles.grid}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "20px" }}>
           {favorites.map((product) => (
-            <div key={product.id} style={{ ...styles.card, background: colors.card }}>
-              <Image
-                src={product.img}
-                alt={product.title[language] || "Product Image"}
-                width={300}
-                height={180}
-                style={{ borderRadius: "10px", objectFit: "cover" }}
-              />
+            <div key={product.id} style={{ background: colors.card, borderRadius: "12px", padding: "10px", textAlign: "center" }}>
+              <Image src={product.img} alt={product.title[language]} width={300} height={180} style={{ borderRadius: "10px", objectFit: "cover" }} />
               <h3>{product.title[language]}</h3>
               <p style={{ color: colors.price }}>{product.price}</p>
-              <div style={styles.buttonGroup}>
-                <button onClick={() => handleAddToCart(product)} style={{ ...styles.button, background: "#2196f3" }}>
+              <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+                <button onClick={() => handleAddToCart(product)} style={{ flex: 1, background: "#2196f3", color: "#fff", padding: "8px 0", borderRadius: "6px" }}>
                   🛒 {language === "mn" ? "Сагсанд нэмэх" : "Add to Cart"}
                 </button>
-                <button onClick={() => removeFavorite(product.id)} style={{ ...styles.button, background: "#f44336" }}>
+                <button onClick={() => removeFavorite(product.id)} style={{ flex: 1, background: "#f44336", color: "#fff", padding: "8px 0", borderRadius: "6px" }}>
                   ❌ {language === "mn" ? "Хасах" : "Remove"}
                 </button>
               </div>
@@ -104,29 +99,5 @@ export default function FavoritesPage() {
   );
 }
 
-const lightColors = {
-  bg: "#f5f5f5",
-  text: "#222",
-  card: "#fff",
-  button: "#333",
-  price: "#009688",
-};
-
-const darkColors = {
-  bg: "#121212",
-  text: "#f5f5f5",
-  card: "#1e1e1e",
-  button: "#555",
-  price: "#80cbc4",
-};
-
-const styles = {
-  container: { minHeight: "100vh", padding: "40px 20px", transition: "0.4s ease all" },
-  header: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" },
-  themeBtn: { border: "none", color: "#fff", padding: "8px 16px", borderRadius: "6px", cursor: "pointer", transition: "0.3s" },
-  empty: { textAlign: "center", color: "#777" },
-  grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "20px" },
-  card: { borderRadius: "12px", overflow: "hidden", boxShadow: "0 4px 8px rgba(0,0,0,0.2)", transition: "0.3s", textAlign: "center", padding: "10px" },
-  buttonGroup: { display: "flex", justifyContent: "space-between", gap: "10px", marginTop: "10px" },
-  button: { flex: 1, border: "none", color: "#fff", padding: "8px 0", borderRadius: "6px", cursor: "pointer", transition: "0.3s" },
-};
+const lightColors = { bg: "#f5f5f5", text: "#222", card: "#fff", price: "#e63946", button: "#333" };
+const darkColors = { bg: "#121212", text: "#fff", card: "#1e1e1e", price: "#ff6b6b", button: "#333" };
