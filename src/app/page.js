@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
   const [menuActive, setMenuActive] = useState(false);
@@ -168,27 +169,26 @@ export default function HomePage() {
                 <Link href="/favorites">{language === "mn" ? "Таалагдсан" : "Favorites"}</Link>
               </li>
               <li>
-                <a href="#hero">{language === "mn" ? "Нүүр" : "Home"}</a>
+                <Link href="#hero">{language === "mn" ? "Нүүр" : "Home"}</Link>
               </li>
               <li>
-                <a href="#services">{language === "mn" ? "Үйлчилгээ" : "Services"}</a>
+                <Link href="#services">{language === "mn" ? "Үйлчилгээ" : "Services"}</Link>
               </li>
               <li>
-                <a href="#products">{language === "mn" ? "Бүтээгдэхүүн" : "Products"}</a>
+                <Link href="#products">{language === "mn" ? "Бүтээгдэхүүн" : "Products"}</Link>
               </li>
               <li>
-                <a href="#about">{language === "mn" ? "Бидний тухай" : "About Us"}</a>
+                <Link href="#about">{language === "mn" ? "Бидний тухай" : "About Us"}</Link>
               </li>
               <li>
-                <a href="#contact">{language === "mn" ? "Холбогдох" : "Contact"}</a>
+                <Link href="#contact">{language === "mn" ? "Холбогдох" : "Contact"}</Link>
               </li>
             </ul>
           </nav>
         </div>
       </header>
 
-     
-    
+      {/* Hero Section */}
       <section className="hero" id="hero">
         <div className="container">
           <div className="hero-content">
@@ -203,18 +203,18 @@ export default function HomePage() {
                 : "We provide all your printing needs in one place with complete solutions."}
             </p>
             <div className="btn-group">
-              <link href="#products" className="btn">
+              <Link href="#products" className="btn">
                 {language === "mn" ? "Бүтээгдэхүүн үзэх" : "View Products"}
-              </link>
-              <link href="#contact" className="btn btn-secondary">
+              </Link>
+              <Link href="#contact" className="btn btn-secondary">
                 {language === "mn" ? "Үнэ авах" : "Get Quote"}
-              </link>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      
+      {/* Services Section */}
       <section className="services" id="services">
         <div className="container">
           <div className="section-title">
@@ -224,10 +224,13 @@ export default function HomePage() {
           <div className="services-grid">
             {services.map((service, index) => (
               <div key={index} className="service-card">
-                <div
+                <Image
+                  src={service.img}
+                  alt={service.title[language]}
+                  width={400}
+                  height={250}
                   className="service-img"
-                  style={{ backgroundImage: `url(${service.img})` }}
-                ></div>
+                />
                 <div className="service-content">
                   <span className="service-icon">{service.icon}</span>
                   <h3>{service.title[language]}</h3>
@@ -239,6 +242,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Products Section */}
       <section className="products" id="products">
         <div className="container">
           <div className="section-title">
@@ -251,27 +255,23 @@ export default function HomePage() {
                 {product.badge && (
                   <div className="product-badge">{product.badge}</div>
                 )}
-                <div
+                <Image
+                  src={product.img}
+                  alt={product.title[language]}
+                  width={400}
+                  height={250}
                   className="product-img"
-                  style={{ backgroundImage: `url(${product.img})` }}
-                ></div>
+                />
                 <div className="product-content">
-                  <span className="product-category">
-                    {product.category[language]}
-                  </span>
+                  <span className="product-category">{product.category[language]}</span>
                   <h3>{product.title[language]}</h3>
                   <div className="product-price">{product.price}</div>
                   <div className="product-actions">
-                    <button
-                      className="btn btn-cart"
-                      onClick={() => addToCart(product)}
-                    >
+                    <button className="btn btn-cart" onClick={() => addToCart(product)}>
                       🛒 {language === "mn" ? "Сагсанд нэмэх" : "Add to Cart"}
                     </button>
                     <button
-                      className={`btn btn-favorite ${
-                        favorites.includes(index) ? "active" : ""
-                      }`}
+                      className={`btn btn-favorite ${favorites.includes(index) ? "active" : ""}`}
                       onClick={() => toggleFavorite(index)}
                     >
                       ❤
@@ -284,29 +284,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* About Section */}
       <section id="about" className="about">
         <div className="container">
           <div className="section-title">
             <h2>{language === "mn" ? "Бидний тухай" : "About Us"}</h2>
-            <p>
-              {language === "mn"
-                ? "Admon компанийн товч танилцуулга"
-                : "Brief introduction about Admon"}
-            </p>
+            <p>{language === "mn" ? "Admon компанийн товч танилцуулга" : "Brief introduction about Admon"}</p>
           </div>
           <div className="about-content">
             <div className="about-text">
               <h3>{language === "mn" ? "20+ жилийн туршлага" : "20+ Years of Experience"}</h3>
               <p>
-                {language === "mn"
+                {language === "mn" 
                   ? "АДМОН компани нь 2000 оноос хойш тасралтгүй үйл ажиллагаа явуулж, хэвлэлийн салбарт Монголын тэргүүлэгч компаниудын нэг болон хөгжиж ирсэн.Бид орчин үеийн тоног төхөөрөмж, дэвшилтэт технологийг нэвтрүүлж, олон улсын стандартыг баримталж ажилладаг.Манай компани нь зөвхөн хэвлэх үйлдвэр биш, харин дизайн, хэвлэл, хувилахаас эхлээд бүтээгдэхүүнийг гарт хүргэх хүртэлх бүх үйл явцыг гүйцэтгэдэг цогц үйлчилгээний компани юм."
                   : "ADMON Company has been operating continuously since 2000 and has developed into one of Mongolia's leading companies in the printing industry. We introduce modern equipment and advanced technology and adhere to international standards. Our company is not just a printing house, but a comprehensive service company that performs the entire process from design, printing, copying to delivering products to the hand"}
               </p>
             </div>
             <div className="about-img">
-              <img
+              <Image
                 src="https://blogimage.vantagecircle.com/content/images/2020/08/teamwork-and-team-building.png"
                 alt="Admon team"
+                width={500}
+                height={300}
               />
             </div>
           </div>
