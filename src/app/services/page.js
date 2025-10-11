@@ -28,7 +28,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      {/* ======= HEADER ======= */}
+      
       <header>
         <div className="container">
           <nav>
@@ -50,7 +50,7 @@ export default function ServicesPage() {
         </div>
       </header>
 
-      {/* ======= SERVICES SECTION ======= */}
+      
       <section id="services" className="services">
         <div className="container">
           <div className="section-title">
@@ -89,7 +89,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ======= FOOTER ======= */}
+      
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">
