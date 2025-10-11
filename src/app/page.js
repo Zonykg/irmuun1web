@@ -9,9 +9,10 @@ export default function HomePage() {
   const [language, setLanguage] = useState("mn");
   const [favorites, setFavorites] = useState([]);
   const [cart, setCart] = useState([]);
+  
 
   const toggleMenu = () => setMenuActive(!menuActive);
-
+ 
   const toggleFavorite = (index) => {
     setFavorites((prev) => {
       const updated = prev.includes(index)
@@ -116,7 +117,7 @@ export default function HomePage() {
         mn: "Бүтээгдэхүүний сав баглаа боодол, шошго, багц дизайныг хийх үйлчилгээ.",
         en: "We design packaging, labels, and product packages.",
       },
-      img: "https://images.unsplash.com/photo-1590608897129-79c95e17c33d?auto=format&fit=crop&w=400&q=80",
+      img: " https://images.unsplash.com/photo-1590608897129-79c95e17c33d?auto=format&fit=crop&w=400&q=80",
     },
   ];
 
@@ -159,28 +160,33 @@ export default function HomePage() {
             >
               {language === "mn" ? "EN" : "MN"}
             </button>
-
-            <button className="mobile-menu-btn" onClick={toggleMenu}>
-              <i className={menuActive ? "fas fa-times" : "fas fa-bars"}></i>
+            <button 
+              className="hamburger-btn"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
 
             <ul className={`nav-links ${menuActive ? "active" : ""}`}>
-              <li>
+              <li style={{color:"black"}}>
                 <Link href="/favorites">{language === "mn" ? "Таалагдсан" : "Favorites"}</Link>
               </li>
-              <li>
+              <li style={{color:"black"}}>
                 <Link href="#hero">{language === "mn" ? "Нүүр" : "Home"}</Link>
               </li>
-              <li>
+              <li style={{color:"black"}}>
                 <Link href="#services">{language === "mn" ? "Үйлчилгээ" : "Services"}</Link>
               </li>
-              <li>
+              <li style={{color:"black"}}>
                 <Link href="#products">{language === "mn" ? "Бүтээгдэхүүн" : "Products"}</Link>
               </li>
-              <li>
+              <li style={{color:"black"}}>
                 <Link href="#about">{language === "mn" ? "Бидний тухай" : "About Us"}</Link>
               </li>
-              <li>
+              <li style={{color:"black"}}>
                 <Link href="#contact">{language === "mn" ? "Холбогдох" : "Contact"}</Link>
               </li>
             </ul>
@@ -188,7 +194,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Hero Section */}
+     
       <section className="hero" id="hero">
         <div className="container">
           <div className="hero-content">
@@ -214,7 +220,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section */}
       <section className="services" id="services">
         <div className="container">
           <div className="section-title">
@@ -225,7 +230,7 @@ export default function HomePage() {
             {services.map((service, index) => (
               <div key={index} className="service-card">
                 <Image
-                  src={service.img}
+                  src={service.img.trimStart()}
                   alt={service.title[language]}
                   width={400}
                   height={250}
@@ -242,7 +247,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Products Section */}
       <section className="products" id="products">
         <div className="container">
           <div className="section-title">
@@ -284,7 +288,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About Section */}
       <section id="about" className="about">
         <div className="container">
           <div className="section-title">
@@ -449,6 +452,28 @@ nav {
   align-items: center;
   gap: 0.5rem;
 }
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #3294ebff;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: flex;
+  }
+}
 
 /* Desktop menu */
 .nav-links {
@@ -488,7 +513,7 @@ nav {
     position: absolute;
     top: 70px;
     right: 0;
-    background: white;
+    background: #382AFA0% #2575fc 100%;
     width: 100%;
     max-height: 0;
     overflow: hidden;
