@@ -143,7 +143,7 @@ export default function HomePage() {
     { title: { mn: "Плакат хэвлэл", en: "Printed Poster" }, category: { mn: "Хэвлэлийн бүтээгдэхүүн", en: "Printed Product" }, price: "$20", badge: "Шинэ", id: 20, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScYFU70_eR_pZ1p_yB4DmauHmy2I7lZkQUeA&s" },
   ];
 
-   return (
+  return (
     <>
       <header>
         <div className="container">
@@ -188,9 +188,39 @@ export default function HomePage() {
         </div>
       </header>
 
+      {/* Hero Section */}
+      <section className="hero" id="hero">
+        <div className="container">
+          <div className="hero-content">
+            <h1>
+              {language === "mn"
+                ? "Монголын шилдэг хэвлэлийн үйлчилгээ"
+                : "Mongolia's Best Printing Services"}
+            </h1>
+            <p>
+              {language === "mn"
+                ? "Бид таны бүх төрлийн хэвлэлийн хэрэгцээг нэг дороос шийдэх бүрэн цогц шийдлийг санал болгож байна"
+                : "We provide all your printing needs in one place with complete solutions."}
+            </p>
+            <div className="btn-group">
+              <Link href="#products" className="btn">
+                {language === "mn" ? "Бүтээгдэхүүн үзэх" : "View Products"}
+              </Link>
+              <Link href="#contact" className="btn btn-secondary">
+                {language === "mn" ? "Үнэ авах" : "Get Quote"}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section className="services" id="services">
         <div className="container">
+          <div className="section-title">
+            <h2>{language === "mn" ? "Бидний Үйлчилгээ" : "Our Services"}</h2>
+            <p>{language === "mn" ? "Бид олон төрлийн үйлчилгээ үзүүлдэг" : "We offer a variety of services"}</p>
+          </div>
           <div className="services-grid">
             {services.map((service, index) => (
               <div key={index} className="service-card">
@@ -215,10 +245,16 @@ export default function HomePage() {
       {/* Products Section */}
       <section className="products" id="products">
         <div className="container">
+          <div className="section-title">
+            <h2>{language === "mn" ? "Бүтээгдэхүүн" : "Products"}</h2>
+            <p>{language === "mn" ? "Бидний бүтээгдэхүүнүүд" : "Our Products"}</p>
+          </div>
           <div className="products-grid">
             {products.map((product, index) => (
               <div key={index} className="product-card">
-                {product.badge && <div className="product-badge">{product.badge}</div>}
+                {product.badge && (
+                  <div className="product-badge">{product.badge}</div>
+                )}
                 <Image
                   src={product.img}
                   alt={product.title[language]}
@@ -513,4 +549,4 @@ export default function HomePage() {
       `}</style>
     </>
   );
-}
+} 
