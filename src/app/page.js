@@ -93,7 +93,7 @@ export default function HomePage() {
 
   const services = [
     {
-      icon: "📄",
+      icon: "",
       title: { mn: "Ном, товхимол хэвлэх", en: "Book & Brochure Printing" },
       desc: {
         mn: "Бид таны ном, товхимол, брошюрийг өндөр чанартайгаар хэвлэнэ.",
@@ -102,7 +102,7 @@ export default function HomePage() {
       img: "https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=400&q=80",
     },
     {
-      icon: "🎨",
+      icon: "",
       title: { mn: "График & Дизайн", en: "Graphic & Design" },
       desc: {
         mn: "Бид таны брэндийн зураг, лого, маркетингийн материалын дизайныг боловсруулна.",
@@ -111,7 +111,7 @@ export default function HomePage() {
       img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80",
     },
     {
-      icon: "📦",
+      icon: "",
       title: { mn: "Сав баглаа боодол", en: "Packaging" },
       desc: {
         mn: "Бүтээгдэхүүний сав баглаа боодол, шошго, багц дизайныг хийх үйлчилгээ.",
