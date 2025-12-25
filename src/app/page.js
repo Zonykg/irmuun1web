@@ -494,7 +494,7 @@ nav {
   color: #2575fc;
 }
 
-/* Mobile menu button */
+
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -503,7 +503,7 @@ nav {
   cursor: pointer;
 }
 
-/* Responsive part */
+
 @media (max-width: 768px) {
   .mobile-menu-btn {
     display: block;
